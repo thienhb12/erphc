@@ -27,13 +27,14 @@ class DevelopmentSeeder extends Seeder
         foreach($lastNames as $index => $lastName)
         {
             $testUser = User::create([
-                'username'              => 'user' . $index,
-                'first_name'            => 'User',
-                'last_name'             => $lastName,
-                'email'                 => 'user' . $index . '@email.com',
-                "password"              => "Password1",
-                "auth_type"             => "internal",
-                "enabled"               => true
+                 'username'    => 'user' . $index,
+                 'first_name'  => 'User',
+                 'last_name'   => $lastName,
+                 'email'       => 'user' . $index . '@email.com',
+                 "password"    => "Password1",
+                 "user_gender" => 1,
+                 "auth_type"   => "internal",
+                 "enabled"     => true
             ]);
         }
 

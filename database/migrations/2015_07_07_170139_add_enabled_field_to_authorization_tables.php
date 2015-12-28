@@ -24,6 +24,14 @@ class AddEnabledFieldToAuthorizationTables extends Migration
         Schema::table('permissions', function ($table) {
             $table->boolean('enabled')->default(false);
         });
+        
+        Schema::table('department', function ($table) {
+            $table->boolean('enabled')->default(false);
+        });
+
+        Schema::table('regency', function ($table) {
+            $table->boolean('enabled')->default(false);
+        });
     }
 
     /**
@@ -43,6 +51,12 @@ class AddEnabledFieldToAuthorizationTables extends Migration
             $table->dropColumn('enabled');
         });
         Schema::table('permissions', function ($table) {
+            $table->dropColumn('enabled');
+        });
+        Schema::table('department', function ($table) {
+            $table->dropColumn('enabled');
+        });
+        Schema::table('regency', function ($table) {
             $table->dropColumn('enabled');
         });
     }

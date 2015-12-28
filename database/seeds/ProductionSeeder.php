@@ -220,6 +220,7 @@ class ProductionSeeder extends Seeder
             "username"      => "root",
             "email"         => "root@email.com",
             "password"      => "Password1",
+            "user_gender"   => 1,
             "auth_type"     => "internal",
             "enabled"       => true
             ]);
