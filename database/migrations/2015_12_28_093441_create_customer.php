@@ -14,9 +14,15 @@ class CreateCustomer extends Migration
     {
         Schema::create('customer', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name')->length(80);
             $table->string('address');
             $table->integer('phone');
+            $table->string('zalo')->length(80);
+            $table->string('viber')->length(80);
+            $table->string('skyper')->length(80);
+            $table->string('email');
+            $table->string('company');
+            $table->tinyInteger('gender');
             $table->timestamps();
         });
     }
