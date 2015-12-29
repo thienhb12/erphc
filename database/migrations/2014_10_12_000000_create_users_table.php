@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->integer('payroll');
             $table->integer('profits');
             $table->integer('phone');
-            $table->tinyInteger('user_gender')->length(1);
+            $table->boolean('gender')->default(false);
             $table->integer('regency_id')->unsigned();
             $table->foreign('regency_id')->references('id')->on('regency')->onDelete('cascade');
             $table->integer('department_id')->unsigned();

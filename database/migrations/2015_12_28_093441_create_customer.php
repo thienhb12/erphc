@@ -22,7 +22,8 @@ class CreateCustomer extends Migration
             $table->string('skyper')->length(80);
             $table->string('email');
             $table->string('company');
-            $table->tinyInteger('gender');
+            $table->boolean('gender')->default(false);
+            $table->boolean('enabled')->default(false);
             $table->timestamps();
         });
     }
