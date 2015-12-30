@@ -57,13 +57,13 @@
                 </ul>
             </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-cog'></i> <span>Admin</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#"><i class='fa fa-cog'></i> <span>{!! trans('general.left-sidebar.admin') !!}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.audit.index')     }}"><i class='fa fa-binoculars'> </i> Audit   </a></li>
                     <li class="treeview">
                         <a href="#"><i class='fa fa-user-secret'></i> <span>Security</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('admin.users.index')       }}"><i class='fa fa-user'> </i> Users      </a></li>
+                            <li><a href="{{ route('admin.users.index')       }}"><i class='fa fa-user'> </i> {!! trans('general.left-sidebar.users') !!} </a></li>
                             <li><a href="{{ route('admin.roles.index')       }}"><i class='fa fa-users'></i> Roles      </a></li>
                             <li><a href="{{ route('admin.permissions.index') }}"><i class='fa fa-bolt'> </i> Permissions</a></li>
                             <li><a href="{{ route('admin.routes.index')      }}"><i class='fa fa-road'> </i> Routes     </a></li>

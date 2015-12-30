@@ -5,7 +5,8 @@ use App\User;
 use App\Models\Role;
 use App\Models\Permission;
 use App\Models\Route;
-
+use App\Models\Regency;
+use App\Models\Department;
 class ProductionSeeder extends Seeder
 {
 
@@ -208,7 +209,24 @@ class ProductionSeeder extends Seeder
             "enabled"       => true
         ]);
         $roleAuditPurgers->perms()->attach($permAuditPurge->id);
-
+        // Create regency data
+        $regency_data = array('Trưởng Phòng','Nhân viên');
+        foreach($regency_data as $data)
+        {
+            $regency = Regency::create([
+                'name'    =>  $data,
+                'enabled' => true,
+            ]);
+        }
+        // Create department data
+        $department_data = array('quản lý','kinh doanh','sản xuất','marketing-degital','kế toán','giao nhận');
+        foreach($department_data as $data)
+        {
+            $department = Department::create([
+                'name'    =>  $data,
+                'enabled' => true,
+            ]);
+        }
 
         ////////////////////////////////////
         // Create user: root
@@ -220,10 +238,12 @@ class ProductionSeeder extends Seeder
             "username"      => "root",
             "email"         => "root@email.com",
             "password"      => "Password1",
-            "user_gender"   => 1,
+            "gender"        => true,
             "auth_type"     => "internal",
-            "enabled"       => true
-            ]);
+            "enabled"       => true,
+            "regency_id"    => true,
+            "department_id" => true
+        ]);
         $userRoot->roles()->attach($roleAdmins->id);
 
 

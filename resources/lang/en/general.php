@@ -60,4 +60,11 @@ return [
         'msg-forcing-logout'    => 'Forcing logout: :username.',
     ],
 
+    'left-sidebar' => [
+        'users'    => 'Quản Lý Nhân viên',
+        'admin'    => 'Quản trị hệ thông',
+        'security' => 'Bảo Mật',
+    ]
+
+
 ];
