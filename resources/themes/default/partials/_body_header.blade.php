@@ -6,7 +6,7 @@
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>L</b>ESK</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Laravel 5.1 </b>ESK</span>
+        <span class="logo-lg"><b>{!! trans('general.home.site-name') !!}</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -143,10 +143,10 @@
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                    <a href="#" class="btn btn-default btn-flat">{!! trans('general.home.profile') !!}</a>
                                 </div>
                                 <div class="pull-right">
-                                    {!! link_to_route('logout', 'Sign out', [], ['class' => "btn btn-default btn-flat"]) !!}
+                                    {!! link_to_route('logout', trans('general.home.sign-out'), [], ['class' => "btn btn-default btn-flat"]) !!}
                                 </div>
                             </li>
                         </ul>

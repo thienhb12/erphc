@@ -132,7 +132,7 @@ class AuthController extends Controller
      */
     public function getLogin()
     {
-        $page_title = "Login";
+        $page_title = trans('general.login-form.login');
 
         return view('auth.login', compact('page_title'));
     }

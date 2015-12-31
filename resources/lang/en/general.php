@@ -3,15 +3,15 @@
 return [
 
     'button'              => [
-        'cancel'            => 'Cancel',
-        'close'             => 'Close',
-        'create'            => 'Create',
-        'delete'            => 'Delete',
-        'edit'              => 'Edit',
+        'cancel'            => 'Hủy',
+        'close'             => 'Đóng',
+        'create'            => 'Thêm',
+        'delete'            => 'Xóa',
+        'edit'              => 'Chỉnh sửa',
         'ok'                => 'OK',
         'display'           => 'Show details',
         'replay'            => 'Replay',
-        'update'            => 'Update',
+        'update'            => 'Cập nhật',
         'enable'            => 'Enable',
         'enabled'           => 'Enabled',
         'disable'           => 'Disable',
@@ -21,15 +21,15 @@ return [
     ],
 
     'status'              => [
-        'enabled'           => 'Enabled',
+        'enabled'           => 'Hiển thị',
     ],
 
     'tabs'              => [
-        'details'           => 'Details',
-        'options'           => 'Options',
-        'perms'             => 'Permissions',
-        'users'             => 'Users',
-        'roles'             => 'Roles',
+        'details'           => 'Chi tiết',
+        'options'           => 'Lựa chọn',
+        'perms'             => 'Phân quyền chức năng',
+        'users'             => 'Tài khoản',
+        'roles'             => 'Cấp độ tài khoản',
         'routes'            => 'Routes',
         'data'              => 'Data',
     ],
@@ -54,17 +54,35 @@ return [
     ],
 
     'audit-log'           => [
-        'category-login'        => 'Login',
+        'category-login'        => 'Đăng nhập',
         'msg-login-success'     => 'Successful login: :username.',
         'msg-login-failed'      => 'Login failed: :username.',
         'msg-forcing-logout'    => 'Forcing logout: :username.',
     ],
 
     'left-sidebar' => [
-        'users'    => 'Quản Lý Nhân viên',
-        'admin'    => 'Quản trị hệ thông',
-        'security' => 'Bảo Mật',
+        'users'      => 'Quản Lý Nhân viên',
+        'admin'      => 'Quản trị hệ thống',
+        'security'   => 'Bảo Mật',
+        'roles'      => 'Cấp độ tài khoản',
+        'permission' => 'Phân quyền chức năng',
+        'audit'      => 'Kiểm tra lịch sử',
+        'router'     => 'Định tuyến',
+        'settings'   => 'Cấu hình hệ thống',
+    ],
+
+    'home' => [
+        'site-name' => 'Hồng Chính ERP', 
+        'sign-out'  => 'Thoát',
+        'profile'   => 'Thông tin cá nhân',
+    ],
+
+    'login-form' => [
+        'sign-in'    => 'Đăng nhập',
+        'note-login' => 'Đăng nhập để sử dụng..!',
+        'username'   => 'Tài khoản',
+        'password'   => 'Mật Khẩu',
+        'remember'   => 'Ghi nhớ mật khẩu',
+        'login'      => 'Đăng nhập',
     ]
-
-
 ];

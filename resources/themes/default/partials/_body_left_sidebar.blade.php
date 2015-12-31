@@ -59,17 +59,17 @@
             <li class="treeview">
                 <a href="#"><i class='fa fa-cog'></i> <span>{!! trans('general.left-sidebar.admin') !!}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('admin.audit.index')     }}"><i class='fa fa-binoculars'> </i> Audit   </a></li>
+                    <li><a href="{{ route('admin.audit.index') }}"><i class='fa fa-binoculars'> </i>  {!! trans('general.left-sidebar.audit') !!}   </a></li>
                     <li class="treeview">
                         <a href="#"><i class='fa fa-user-secret'></i> <span> {!! trans('general.left-sidebar.security') !!}</span> <i class="fa fa-angle-left pull-right"></i></a>
                         <ul class="treeview-menu">
                             <li><a href="{{ route('admin.users.index')       }}"><i class='fa fa-user'> </i> {!! trans('general.left-sidebar.users') !!} </a></li>
-                            <li><a href="{{ route('admin.roles.index')       }}"><i class='fa fa-users'></i> Roles      </a></li>
-                            <li><a href="{{ route('admin.permissions.index') }}"><i class='fa fa-bolt'> </i> Permissions</a></li>
-                            <li><a href="{{ route('admin.routes.index')      }}"><i class='fa fa-road'> </i> Routes     </a></li>
+                            <li><a href="{{ route('admin.roles.index')       }}"><i class='fa fa-users'></i> {!! trans('general.left-sidebar.roles') !!}      </a></li>
+                            <li><a href="{{ route('admin.permissions.index') }}"><i class='fa fa-bolt'> </i> {!! trans('general.left-sidebar.permission') !!}</a></li>
+                            <li><a href="{{ route('admin.routes.index')      }}"><i class='fa fa-road'> </i> {!! trans('general.left-sidebar.router') !!}    </a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ route('flash_test_warning')     }}"><i class='fa fa-cogs'> </i> Settings   </a></li>
+                    <li><a href="{{ route('flash_test_warning')     }}"><i class='fa fa-cogs'> </i> {!! trans('general.left-sidebar.settings') !!}   </a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->
