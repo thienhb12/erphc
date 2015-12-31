@@ -146,7 +146,7 @@
                                     <a href="#" class="btn btn-default btn-flat">{!! trans('general.home.profile') !!}</a>
                                 </div>
                                 <div class="pull-right">
-                                    {!! link_to_route('logout', trans('general.home.sign-out'), [], ['class' => "btn btn-default btn-flat"]) !!}
+                                    {!! link_to_route('logout', trans('eneral.home.sign-out'), [], ['class' => "btn btn-default btn-flat"]) !!}
                                 </div>
                             </li>
                         </ul>
