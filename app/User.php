@@ -35,7 +35,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *
      * @var array
      */
-    protected $fillable = ['first_name', 'last_name', 'username', 'email', 'password', 'auth_type', 'enabled'];
+    protected $fillable = ['first_name', 'last_name', 'username', 'email', 'password', 'auth_type', 'enabled','regency_id','department_id','profits','payroll'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -234,7 +234,6 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         if (!array_key_exists('auth_type', $attributes) || ("" == ($attributes['auth_type'])) ) {
             $attributes['auth_type'] = Config::get('eloquent-ldap.label_internal');
         }
-
         // Call original create method from parent
         $user = parent::create($attributes);
 
@@ -274,6 +273,24 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         }
         if( array_key_exists('enabled', $attributes) ) {
             $this->enabled = $attributes['enabled'];
+        }
+        if( array_key_exists('phone', $attributes) ) {
+            $this->phone   = $attributes['phone'];
+        }
+        if( array_key_exists('profits', $attributes) ) {
+            $this->profits = $attributes['profits'];
+        }
+        if( array_key_exists('regency_id', $attributes) ) {
+            $this->regency_id = $attributes['regency_id'];
+        }
+        if( array_key_exists('department_id', $attributes) ) {
+            $this->department_id = $attributes['department_id'];
+        }
+        if( array_key_exists('payroll', $attributes) ) {
+            $this->payroll = $attributes['payroll'];
+        }
+        if( array_key_exists('gender', $attributes) ) {
+            $this-> gender = $attributes['gender'];
         }
         $this->save();
 

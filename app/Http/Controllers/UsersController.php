@@ -77,7 +77,6 @@ class UsersController extends Controller {
     public function show($id)
     {
         $user = $this->user->find($id);
-
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-show', ['username' => $user->username]));
 
         $page_title = trans('admin/users/general.page.show.title'); // "Admin | User | Show";
@@ -117,6 +116,9 @@ class UsersController extends Controller {
     {
 
         $attributes = $request->all();
+       /* echo '<pre>';
+        print_r($attributes);
+        echo '</pre>';*/
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-store', ['username' => $attributes['username']]));
 
         if ( array_key_exists('selected_roles', $attributes) ) {
@@ -138,14 +140,15 @@ class UsersController extends Controller {
      * @return \Illuminate\View\View
      */
     public function edit($id)
-    {
+    {   
         $user = $this->user->find($id);
 
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-edit', ['username' => $user->username]));
 
         $page_title = trans('admin/users/general.page.edit.title'); // "Admin | User | Edit";
         $page_description = trans('admin/users/general.page.edit.description', ['full_name' => $user->full_name]); // "Editing user";
-
+        $department_data  = $this->department->where('enabled',1)->lists('name','id');
+        $regency_data     = $this->regency->where('enabled',1)->lists('name','id');
         if (!$user->isEditable())
         {
             abort(403);
@@ -156,7 +159,7 @@ class UsersController extends Controller {
 //        $roleCollection = \App\Models\Role::take(10)->get(['id', 'display_name'])->lists('display_name', 'id');
 //        $roleList = [''=>''] + $roleCollection->all();
 
-        return view('admin.users.edit', compact('user', 'roles', 'perms', 'page_title', 'page_description'));
+        return view('admin.users.edit', compact('user', 'roles', 'perms', 'page_title', 'page_description','department_data','regency_data'));
     }
 
     static public function ParseUpdateAuditLog($id)

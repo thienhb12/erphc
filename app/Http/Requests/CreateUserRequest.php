@@ -25,10 +25,10 @@ class CreateUserRequest extends Request {
             'first_name' => 'required|min:3|max:255',
             'username'   => 'required|unique:users',
             'password'   => 'required|confirmed',
-            'phone'      => 'required|integer',
+            'phone'      => 'required|',
             'email'      => 'required|email|min:3|unique:users',
-            'payroll'    => 'required|integer|min:3|max:255',
-            'profits'    => 'required|integer|min:3|max:255',      
+            'payroll'    => 'required|integer',
+            'profits'    => 'required|integer',      
         ];
     }
 

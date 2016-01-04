@@ -45,13 +45,13 @@
             </div>
 
              <div class="form-group">
-                {!! Form::label('department', trans('admin/users/general.columns.department')) !!}
-                {!! Form::select('gender', $department_data, null, ['class' => 'form-control', 'id' => 'department',  'style' => "width: 100%"]) !!}
+                {!! Form::label('department_id', trans('admin/users/general.columns.department')) !!}
+                {!! Form::select('department_id', $department_data, null, ['class' => 'form-control', 'id' => 'department',  'style' => "width: 100%"]) !!}
             </div>
 
             <div class="form-group">
                 {!! Form::label('regency', trans('admin/users/general.columns.regency')) !!}
-                {!! Form::select('regency', $regency_data, null, ['class' => 'form-control', 'id' => 'regency',  'style' => "width: 100%"]) !!}
+                {!! Form::select('regency_id', $regency_data, null, ['class' => 'form-control', 'id' => 'regency',  'style' => "width: 100%"]) !!}
             </div>
              
             <div class="form-group">
