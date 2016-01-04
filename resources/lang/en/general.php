@@ -70,6 +70,7 @@ return [
         'router'     => 'Định tuyến',
         'settings'   => 'Cấu hình hệ thống',
         'menu'       => 'Chức năng hệ thống',
+        'custommer'  => 'Quản lý khách Hàng',
     ],
 
     'home' => [

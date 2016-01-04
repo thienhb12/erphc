@@ -61,7 +61,7 @@ return [
 
     'columns'           => [
         'id'                    =>  'ID',
-        'username'              =>  'Tên tài khoản',
+        'username'              =>  'Tài khoản',
         'first_name'            =>  'Tên nhân viên',
         'last_name'             =>  'Last name',
         'name'                  =>  'Name',

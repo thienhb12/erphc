@@ -66,9 +66,10 @@ class UsersController extends Controller {
 
         $page_title = trans('admin/users/general.page.index.title'); // "Admin | Users";
         $page_description = trans('admin/users/general.page.index.description'); // "List of users";
-
+        $department_data  = $this->department->where('enabled',1)->lists('name','id');
+        $regency_data     = $this->regency->where('enabled',1)->lists('name','id');
         $users = $this->user->pushCriteria(new UsersWithRoles())->pushCriteria(new UsersByUsernamesAscending())->paginate(10);
-        return view('admin.users.index', compact('users', 'page_title', 'page_description'));
+        return view('admin.users.index', compact('users', 'page_title', 'page_description','department_data','regency_data'));
     }
 
     /**

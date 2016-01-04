@@ -58,7 +58,7 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get(   'users/{userId}/delete',         ['as' => 'admin.users.delete',           'uses' => 'UsersController@destroy']);
         Route::get(   'users/{userId}/enable',         ['as' => 'admin.users.enable',           'uses' => 'UsersController@enable']);
         Route::get(   'users/{userId}/disable',        ['as' => 'admin.users.disable',          'uses' => 'UsersController@disable']);
-        Route::get(   'users/{userId}/replayEdit',      ['as' => 'admin.users.replay-edit',      'uses' => 'UsersController@replayEdit']);
+        Route::get(   'users/{userId}/replayEdit',     ['as' => 'admin.users.replay-edit',      'uses' => 'UsersController@replayEdit']);
         // Role routes
         Route::post(  'roles/enableSelected',          ['as' => 'admin.roles.enable-selected',  'uses' => 'RolesController@enableSelected']);
         Route::post(  'roles/disableSelected',         ['as' => 'admin.roles.disable-selected', 'uses' => 'RolesController@disableSelected']);
@@ -118,7 +118,7 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get( 'audit/{userId}/show',             ['as' => 'admin.audit.show',              'uses' => 'AuditsController@show']);
 
     }); // End of ADMIN group
-
+    
     // Template tests and demo routes
     Route::get('flashsuccess',  ['as' => 'flash_test_success',  'uses' => 'TestController@flash_success']);
     Route::get('flashinfo',     ['as' => 'flash_test_info',     'uses' => 'TestController@flash_info']);
@@ -135,4 +135,7 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get('admins',                ['as' => 'admins',              'uses' => 'TestController@acl_test_admins']);
         Route::get('power-users',           ['as' => 'power-users',         'uses' => 'TestController@acl_test_power_users']);
     }); // End of ACL-TEST group
+
+    //Customer
+    Route::get( 'custommer', ['as' => 'admin.custommer.index', 'uses' => 'CustommerController@index']);
 }); // end of AUTHORIZE group

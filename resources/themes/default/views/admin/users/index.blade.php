@@ -28,34 +28,34 @@
                 <div class="box-body">
 
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-bordered table-hover">
                             <thead>
-                                <tr>
+                                <tr class="info">
                                     <th style="text-align: center">
                                         <a class="btn" href="#" onclick="toggleCheckbox(); return false;" title="{{ trans('general.button.toggle-select') }}">
                                             <i class="fa fa-check-square-o"></i>
                                         </a>
                                     </th>
                                     <th>{{ trans('admin/users/general.columns.username') }}</th>
-                                    <th>{{ trans('admin/users/general.columns.name') }}</th>
-                                    <th>{{ trans('admin/users/general.columns.roles') }}</th>
+                                    <th>{{ trans('admin/users/general.columns.first_name') }}</th>
+                                    <th>{{ trans('admin/users/general.columns.regency') }}</th>
+                                    <th>{{ trans('admin/users/general.columns.department') }}</th>
                                     <th>{{ trans('admin/users/general.columns.email') }}</th>
-                                    <th>{{ trans('admin/users/general.columns.type') }}</th>
                                     <th>{{ trans('admin/users/general.columns.actions') }}</th>
                                 </tr>
                             </thead>
                             <tfoot>
-                                <tr>
+                                <tr class="info">
                                     <th style="text-align: center">
                                         <a class="btn" href="#" onclick="toggleCheckbox(); return false;" title="{{ trans('general.button.toggle-select') }}">
                                             <i class="fa fa-check-square-o"></i>
                                         </a>
                                     </th>
                                     <th>{{ trans('admin/users/general.columns.username') }}</th>
-                                    <th>{{ trans('admin/users/general.columns.name') }}</th>
-                                    <th>{{ trans('admin/users/general.columns.roles') }}</th>
+                                    <th>{{ trans('admin/users/general.columns.first_name') }}</th>
+                                    <th>{{ trans('admin/users/general.columns.regency') }}</th>
+                                    <th>{{ trans('admin/users/general.columns.department') }}</th>
                                     <th>{{ trans('admin/users/general.columns.email') }}</th>
-                                    <th>{{ trans('admin/users/general.columns.type') }}</th>
                                     <th>{{ trans('admin/users/general.columns.actions') }}</th>
                                 </tr>
                             </tfoot>
@@ -69,9 +69,9 @@
                                         </td>
                                         <td>{!! link_to_route('admin.users.show', $user->username, [$user->id], []) !!}</td>
                                         <td>{!! link_to_route('admin.users.show', $user->full_name, [$user->id], []) !!}</td>
-                                        <td>{{ $user->roles->count() }}</td>
+                                        <td>{{ $regency_data[$user->regency_id] }}</td>
+                                        <td>{{ $department_data[$user->department_id] }}</td>
                                         <td>{{ $user->email }}</td>
-                                        <td>{{ $user->auth_type }}</td>
                                         <td>
                                             @if ( $user->isEditable() )
                                                 <a href="{!! route('admin.users.edit', $user->id) !!}" title="{{ trans('general.button.edit') }}"><i class="fa fa-pencil-square-o"></i></a>

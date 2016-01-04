@@ -49,8 +49,11 @@
                     <li><a href="{{ route('flash_test_error')   }}"><i class='fa fa-ban'>    </i> Error flash  </a></li>
                 </ul>
             </li>
+            <li >
+                <a href="{{ route('admin.custommer.index')}}" title="{!! trans('general.left-sidebar.custommer') !!}"><i class='glyphicon glyphicon-user'></i> <span>{!! trans('general.left-sidebar.custommer') !!}</span></a>
+            </li>
             <li class="treeview">
-                <a href="#"><i class='fa fa-cog'></i> <span>{!! trans('general.left-sidebar.admin') !!}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <a href="#" ><i class='fa fa-cog'></i> <span>{!! trans('general.left-sidebar.admin') !!}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="{{ route('admin.audit.index') }}"><i class='fa fa-binoculars'> </i>  {!! trans('general.left-sidebar.audit') !!}   </a></li>
                     <li class="treeview">
