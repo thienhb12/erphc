@@ -15,6 +15,7 @@ use App\Repositories\AuditRepository as Audit;
 use Flash;
 use Auth;
 use DB;
+use App\Models\Department;
 
 class UsersController extends Controller {
 
@@ -38,6 +39,10 @@ class UsersController extends Controller {
      */
     protected $audit;
 
+    /**
+     * @var Department
+    */
+    protected $department;
     /**
      * @param User $user
      * @param Role $role
@@ -90,7 +95,7 @@ class UsersController extends Controller {
     {
         $page_title = trans('admin/users/general.page.create.title'); // "Admin | User | Create";
         $page_description = trans('admin/users/general.page.create.description'); // "Creating a new user";
-
+        $data = Department::get()->all();
         $perms = $this->perm->pushCriteria(new PermissionsByNamesAscending())->all();
         $user = new \App\User();
 //        $userRoles = $user->roles;

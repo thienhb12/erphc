@@ -48,10 +48,10 @@ class AuthController extends Controller
     {
         return Validator::make($data, [
             'first_name' => 'required|min:3|max:255',
-            'last_name' => 'required|min:3|max:255',
-            'username' => 'required|min:3|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'phone'      => 'required|min:3|max:255|integer',
+            'username'   => 'required|min:3|max:255',
+            'email'      => 'required|email|max:255|unique:users',
+            'password'   => 'required|confirmed|min:6',
         ]);
     }
 
@@ -65,10 +65,11 @@ class AuthController extends Controller
     {
         $user = User::create([
             'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'username' => $data['username'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'phone'      => $data['phone'],
+            'username'   => $data['username'],
+            'email'      => $data['email'],
+            'gender'     => $data['gender'],
+            'password'   => bcrypt($data['password']),
         ]);
 
         Flash::success("Welcome" . $user->first_name . ", your user has been created");

@@ -30,18 +30,31 @@
     @include('partials._errors')
 </div>
 
-<div class="login-box">
-    <div class="login-logo">
-        {{ $page_title or "Page Title" }}
-    </div><!-- /.login-logo -->
-    <div class="login-box-body">
+<section>
+    <div class="container">
+        <div class="row">
+            
+         
+            <div class="login-box">
+                <img src="{{ asset("public/bower_components/admin-lte/dist/img/logo.png") }}" class="img-responsive" alt="logo" />
+                <div class="login-logo">
+                    {{ $page_title or "Page Title" }}
+                </div><!-- /.login-logo -->
+                <div class="login-box-body">
 
-        <!-- Your Page Content Here -->
-        @yield('content')
+                    <!-- Your Page Content Here -->
+                    @yield('content')
+                </div><!-- /.login-box-body -->
+            </div><!-- /.login-box -->
+        </div>
+    </div>
+</section>
 
-    </div><!-- /.login-box-body -->
-</div><!-- /.login-box -->
-
+<footer>
+    <div class="container text-center">
+        Copyright (©) www.hongchinh.vn 
+    </div>
+</footer>
 <!-- jQuery 2.1.4 -->
 <script src="{{ asset("public/bower_components/admin-lte/plugins/jQuery/jQuery-2.1.4.min.js") }}"></script>
 <!-- Bootstrap 3.3.2 JS -->

@@ -33,12 +33,26 @@
                 {!! Form::label('phone', trans('admin/users/general.columns.phone')) !!}
                 {!! Form::text('phone', null, ['class' => 'form-control']) !!}
             </div>
-
+            
             <div class="form-group">
                 {!! Form::label('email', trans('admin/users/general.columns.email')) !!}
                 {!! Form::text('email', null, ['class' => 'form-control']) !!}
             </div>
+            
+            <div class="form-group">
+                {!! Form::label('gender', trans('admin/users/general.columns.gender')) !!}
+                {!! Form::select('gender', ['1' =>  trans('admin/users/general.columns.male'),'2' => trans('admin/users/general.columns.female')], null, ['class' => 'form-control', 'id' => 'gender',  'style' => "width: 100%"]) !!}
+            </div>
+             
+            <div class="form-group">
+                {!! Form::label('payroll', trans('admin/users/general.columns.payroll')) !!}
+                {!! Form::text('payroll', null, ['class' => 'form-control']) !!}
+            </div>
 
+            <div class="form-group">
+                {!! Form::label('profits', trans('admin/users/general.columns.profits')) !!}
+                {!! Form::text('profits', null, ['class' => 'form-control']) !!}
+            </div>       
 
             <div class="form-group">
                 {!! Form::label('auth_type', trans('admin/users/general.columns.type')) !!}

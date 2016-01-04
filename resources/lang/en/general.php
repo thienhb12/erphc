@@ -69,6 +69,7 @@ return [
         'audit'      => 'Kiểm tra lịch sử',
         'router'     => 'Định tuyến',
         'settings'   => 'Cấu hình hệ thống',
+        'menu'       => 'Chức năng hệ thống',
     ],
 
     'home' => [
@@ -83,6 +84,6 @@ return [
         'username'   => 'Tài khoản',
         'password'   => 'Mật Khẩu',
         'remember'   => 'Ghi nhớ mật khẩu',
-        'login'      => 'Đăng nhập',
+        'login'      => 'Đăng nhập hệ thống',
     ]
 ];

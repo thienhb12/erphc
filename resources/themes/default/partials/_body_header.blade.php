@@ -115,14 +115,22 @@
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image"/>
+                            @if( Auth::user()->avarta == NULL)
+                                <i class="fa fa-user"></i>
+                            @else
+                                <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="user-image" alt="User Image"/>
+                            @endif
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{ Auth::user()->username }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                                @if( Auth::user()->avarta == NULL)
+                                    <p><i class="fa fa-user fa-3x"></i></p>
+                                @else
+                                    <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
+                                @endif
                                 <p>
                                     {{ Auth::user()->full_name }} - Web Developer
                                     <small>Member since {{ Auth::user()->created_at->format("F, Y") }}</small>
@@ -146,7 +154,7 @@
                                     <a href="#" class="btn btn-default btn-flat">{!! trans('general.home.profile') !!}</a>
                                 </div>
                                 <div class="pull-right">
-                                    {!! link_to_route('logout', trans('eneral.home.sign-out'), [], ['class' => "btn btn-default btn-flat"]) !!}
+                                    {!! link_to_route('logout', trans('general.home.sign-out'), [], ['class' => "btn btn-default btn-flat"]) !!}
                                 </div>
                             </li>
                         </ul>
