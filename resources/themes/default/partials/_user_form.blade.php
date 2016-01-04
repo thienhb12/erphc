@@ -43,6 +43,16 @@
                 {!! Form::label('gender', trans('admin/users/general.columns.gender')) !!}
                 {!! Form::select('gender', ['1' =>  trans('admin/users/general.columns.male'),'2' => trans('admin/users/general.columns.female')], null, ['class' => 'form-control', 'id' => 'gender',  'style' => "width: 100%"]) !!}
             </div>
+
+             <div class="form-group">
+                {!! Form::label('department', trans('admin/users/general.columns.department')) !!}
+                {!! Form::select('gender', $department_data, null, ['class' => 'form-control', 'id' => 'department',  'style' => "width: 100%"]) !!}
+            </div>
+
+            <div class="form-group">
+                {!! Form::label('regency', trans('admin/users/general.columns.regency')) !!}
+                {!! Form::select('regency', $regency_data, null, ['class' => 'form-control', 'id' => 'regency',  'style' => "width: 100%"]) !!}
+            </div>
              
             <div class="form-group">
                 {!! Form::label('payroll', trans('admin/users/general.columns.payroll')) !!}

@@ -85,6 +85,8 @@ return [
         'female'                =>  'Nữ',
         'payroll'               =>  'Mức lương (VNĐ)',
         'profits'               =>  'Mức thưởng (%)',
+        'regency'               =>  'Chức vụ',
+        'department'            =>  'Phòng ban',
     ],
 
     'button'               => [

@@ -47,7 +47,6 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => 'required|min:3|max:255',
             'phone'      => 'required|min:3|max:255|integer',
             'username'   => 'required|min:3|max:255',
             'email'      => 'required|email|max:255|unique:users',
@@ -69,6 +68,8 @@ class AuthController extends Controller
             'username'   => $data['username'],
             'email'      => $data['email'],
             'gender'     => $data['gender'],
+            'department' => $data['department'],
+            'regency'    => $data['regency'],
             'password'   => bcrypt($data['password']),
         ]);
 

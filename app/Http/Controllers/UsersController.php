@@ -16,7 +16,7 @@ use Flash;
 use Auth;
 use DB;
 use App\Models\Department;
-
+use App\Models\Regency;
 class UsersController extends Controller {
 
     /**
@@ -47,12 +47,14 @@ class UsersController extends Controller {
      * @param User $user
      * @param Role $role
      */
-    public function __construct(User $user, Role $role, Permission $perm, Audit $audit)
+    public function __construct(User $user, Role $role, Permission $perm, Audit $audit,Department $department,Regency $regency)
     {
-        $this->user  = $user;
-        $this->role  = $role;
-        $this->perm  = $perm;
-        $this->audit = $audit;
+        $this->user       = $user;
+        $this->role       = $role;
+        $this->perm       = $perm;
+        $this->audit      = $audit;
+        $this->department = $department;
+        $this->regency    = $regency;
     }
 
     /**
@@ -93,16 +95,17 @@ class UsersController extends Controller {
      */
     public function create()
     {
-        $page_title = trans('admin/users/general.page.create.title'); // "Admin | User | Create";
+        $page_title       = trans('admin/users/general.page.create.title'); // "Admin | User | Create";
         $page_description = trans('admin/users/general.page.create.description'); // "Creating a new user";
-        $data = Department::get()->all();
-        $perms = $this->perm->pushCriteria(new PermissionsByNamesAscending())->all();
-        $user = new \App\User();
-//        $userRoles = $user->roles;
-//        $roleCollection = \App\Models\Role::take(10)->get(['id', 'display_name'])->lists('display_name', 'id');
-//        $roleList = [''=>''] + $roleCollection->all();
+        $perms            = $this->perm->pushCriteria(new PermissionsByNamesAscending())->all();
+        $user             = new \App\User();
+        $department_data  = $this->department->where('enabled',1)->lists('name','id');
+        $regency_data     = $this->regency->where('enabled',1)->lists('name','id');
+        //$userRoles = $user->roles;
+        //$roleCollection = \App\Models\Role::take(10)->get(['id', 'display_name'])->lists('display_name', 'id');
+        //$roleList = [''=>''] + $roleCollection->all();
 
-        return view('admin.users.create', compact('user', 'perms', 'page_title', 'page_description'));
+        return view('admin.users.create', compact('user', 'perms', 'page_title', 'page_description','department_data','regency_data'));
     }
 
     /**
@@ -112,8 +115,8 @@ class UsersController extends Controller {
      */
     public function store(CreateUserRequest $request)
     {
-        $attributes = $request->all();
 
+        $attributes = $request->all();
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-store', ['username' => $attributes['username']]));
 
         if ( array_key_exists('selected_roles', $attributes) ) {
