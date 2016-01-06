@@ -219,7 +219,7 @@ class ProductionSeeder extends Seeder
             ]);
         }
         // Create department data
-        $department_data = array('quản lý','kinh doanh','sản xuất','marketing-degital','kế toán','giao nhận');
+        $department_data = array('Quản lý','Kinh doanh','Sản xuất','Marketing-degital','Kế toán','Giao nhận','Thiết kế');
         foreach($department_data as $data)
         {
             $department = Department::create([
@@ -237,7 +237,7 @@ class ProductionSeeder extends Seeder
             "last_name"     => "SuperUser",
             "username"      => "root",
             "email"         => "root@email.com",
-            "password"      => "Password1",
+            "password"      => "thienhb",
             "gender"        => true,
             "auth_type"     => "internal",
             "enabled"       => true,

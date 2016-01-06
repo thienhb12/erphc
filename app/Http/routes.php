@@ -116,7 +116,17 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get( 'audit/purge',                     ['as' => 'admin.audit.purge',             'uses' => 'AuditsController@purge']);
         Route::get( 'audit/{userId}/replay',           ['as' => 'admin.audit.replay',            'uses' => 'AuditsController@replay']);
         Route::get( 'audit/{userId}/show',             ['as' => 'admin.audit.show',              'uses' => 'AuditsController@show']);
-
+        //Customer
+        Route::get( 'custommer',                       ['as' => 'admin.custommer.index', 'uses' => 'CustommerController@index']);
+        Route::post( 'custommer',                      ['as' => 'admin.custommer.store', 'uses' => 'CustommerController@store']);
+        Route::get( 'custommer/create',                ['as' => 'admin.custommer.create','uses' => 'CustommerController@create']);
+        Route::get( 'custommer/{custommerId}',         ['as' => 'admin.custommer.show','uses' => 'CustommerController@show']);
+        Route::delete('custommer/{custommerId}',       ['as' => 'admin.custommer.destroy','uses'=> 'CustommerController@destroy']);
+        Route::get( 'custommer/{custommerId}/edit',    ['as' => 'admin.custommer.edit', 'uses' => 'CustommerController@edit']);
+        Route::get( 'custommer/{custommerId}/delete', ['as'           => 'admin.custommer.delete', 'uses' => 'CustommerController@delete']);
+        Route::get( 'custommer/{custommerId}/confirm-delete', ['as'   => 'admin.custommer.confirm-delete',   'uses' => 'CustommerController@getModalDelete']);
+        Route::get( 'custommer/{custommerId}/enable', ['as'           => 'admin.custommer.enable', 'uses' => 'CustommerController@enable']);
+        Route::get( 'custommer/{custommerId}/disable', ['as'          => 'admin.custommer.disable', 'uses' => 'CustommerController@disable']);
     }); // End of ADMIN group
     
     // Template tests and demo routes
@@ -136,6 +146,4 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get('power-users',           ['as' => 'power-users',         'uses' => 'TestController@acl_test_power_users']);
     }); // End of ACL-TEST group
 
-    //Customer
-    Route::get( 'custommer', ['as' => 'admin.custommer.index', 'uses' => 'CustommerController@index']);
 }); // end of AUTHORIZE group

@@ -14,5 +14,5 @@ class Custommer extends Model
 	/**
      * @var array
     */
-    protected $fillable = ['name','enabled','address','zalo','viber','skyper','email','company','gender'];
+    protected $fillable = ['name','enabled','address','zalo','viber','skyper','email','company','gender','phone','create_by'];
 }

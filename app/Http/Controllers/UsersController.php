@@ -63,7 +63,6 @@ class UsersController extends Controller {
     public function index()
     {
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-index'));
-
         $page_title = trans('admin/users/general.page.index.title'); // "Admin | Users";
         $page_description = trans('admin/users/general.page.index.description'); // "List of users";
         $department_data  = $this->department->where('enabled',1)->lists('name','id');

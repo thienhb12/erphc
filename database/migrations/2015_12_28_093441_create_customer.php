@@ -16,14 +16,15 @@ class CreateCustomer extends Migration
             $table->increments('id');
             $table->string('name')->length(80);
             $table->string('address');
-            $table->integer('phone');
+            $table->string('phone')->length(100);
             $table->string('zalo')->length(80);
             $table->string('viber')->length(80);
             $table->string('skyper')->length(80);
             $table->string('email');
             $table->string('company');
+            $table->integer('create_by')->length(10);
             $table->boolean('gender')->default(false);
-            $table->boolean('enabled')->default(false);
+            $table->boolean('enabled')->default(true);
             $table->timestamps();
         });
     }
