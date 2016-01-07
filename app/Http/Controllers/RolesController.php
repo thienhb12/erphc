@@ -221,7 +221,7 @@ class RolesController extends Controller {
         $error = null;
 
         $role = $this->role->find($id);
-
+ 
         if (!$role->isdeletable())
         {
             abort(403);
