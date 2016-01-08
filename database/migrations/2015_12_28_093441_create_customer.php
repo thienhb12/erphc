@@ -13,7 +13,7 @@ class CreateCustomer extends Migration
     public function up()
     {
         Schema::create('customer', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->length(80);
             $table->string('address');
             $table->string('phone')->length(100);
@@ -22,6 +22,7 @@ class CreateCustomer extends Migration
             $table->string('skyper')->length(80);
             $table->string('email');
             $table->string('company');
+            $table->string('code');
             $table->integer('create_by')->length(10);
             $table->boolean('gender')->default(false);
             $table->boolean('enabled')->default(true);

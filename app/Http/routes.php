@@ -117,6 +117,8 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get( 'audit/{userId}/replay',           ['as' => 'admin.audit.replay',            'uses' => 'AuditsController@replay']);
         Route::get( 'audit/{userId}/show',             ['as' => 'admin.audit.show',              'uses' => 'AuditsController@show']);
         //Customer
+        Route::post(  'custommer/enableSelected',      ['as' => 'admin.custommer.enable-selected',  'uses' => 'CustommerController@enableSelected']);
+        Route::post(  'custommer/disableSelected',     ['as' => 'admin.custommer.disable-selected', 'uses' => 'CustommerController@disableSelected']);
         Route::get( 'custommer',                       ['as' => 'admin.custommer.index','uses' => 'CustommerController@index']);
         Route::post( 'custommer',                      ['as' => 'admin.custommer.store', 'uses' => 'CustommerController@store']);
         Route::get( 'custommer/create',                ['as' => 'admin.custommer.create','uses' => 'CustommerController@create']);
