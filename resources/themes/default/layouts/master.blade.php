@@ -22,10 +22,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <!-- Application CSS-->
     <link href="{{ asset(elixir('css/all.css')) }}" rel="stylesheet" type="text/css" />
-
+    
+    
     <!-- Head -->
     @include('partials._head')
-
+    
     <!-- Optional header section  -->
     @yield('head_extra')
 
