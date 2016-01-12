@@ -166,6 +166,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         YAAP\Theme\ThemeServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class,
     ],
 
     /*
@@ -220,6 +221,7 @@ return [
         'Flash'      => Laracasts\Flash\Flash::class,
         'Theme'      => YAAP\Theme\Facades\Theme::class,
         'Entrust'    => Zizaco\Entrust\EntrustFacade::class,
+        'Datatables' => Yajra\Datatables\Datatables::class,
     ],
 
 ];
