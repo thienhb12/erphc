@@ -120,10 +120,8 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::post(  'custommer/enableSelected',      ['as' => 'admin.custommer.enable-selected',  'uses' => 'CustommerController@enableSelected']);
         Route::post(  'custommer/disableSelected',     ['as' => 'admin.custommer.disable-selected', 'uses' => 'CustommerController@disableSelected']);
         Route::get( 'custommer',                       ['as' => 'admin.custommer.index','uses' => 'CustommerController@index']);
-        Route::post( 'custommer',                      ['as' => 'admin.custommer.store', 'uses' => 'CustommerController@store']);
         Route::get( 'custommer/create',                ['as' => 'admin.custommer.create','uses' => 'CustommerController@create']);
-        Route::get( 'custommer/{custommerId}',         ['as' => 'admin.custommer.show','uses'   => 'CustommerController@show']);
-        Route::get(   'custommer/{custommerId}',       ['as' => 'admin.custommer.show','uses'   => 'CustommerController@show']);
+        Route::get( 'custommer/{custommerId}',         ['as' => 'admin.custommer.show','uses'   => 'CustommerController@show']);        
         Route::patch( 'custommer/{custommerId}',       ['as' => 'admin.custommer.patch','uses'  => 'CustommerController@update']);
         Route::put(   'custommer/{custommerId}',       ['as' => 'admin.custommer.update','uses' => 'CustommerController@update']);
         Route::delete('custommer/{custommerId}',       ['as' => 'admin.custommer.destroy','uses'=> 'CustommerController@destroy']);
@@ -132,6 +130,7 @@ Route::group(['middleware' => 'authorize'], function () {
         Route::get( 'custommer/{custommerId}/confirm-delete', ['as'   => 'admin.custommer.confirm-delete',   'uses' => 'CustommerController@getModalDelete']);
         Route::get( 'custommer/{custommerId}/enable', ['as'  => 'admin.custommer.enable', 'uses'=> 'CustommerController@enable']);
         Route::get( 'custommer/{custommerId}/disable', ['as' => 'admin.custommer.disable','uses' => 'CustommerController@disable']);
+        Route::get( 'custommer_data/datatable',                  ['as' => 'admin.custommer.data', 'uses' => 'CustommerController@data']);
     }); // End of ADMIN group
     
     // Template tests and demo routes

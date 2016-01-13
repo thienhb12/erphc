@@ -19,7 +19,7 @@ class UpdateUserRequest extends Request {
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'password' => 'confirmed',

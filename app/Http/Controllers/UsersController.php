@@ -116,11 +116,7 @@ class UsersController extends Controller {
     {
 
         $attributes = $request->all();
-       /* echo '<pre>';
-        print_r($attributes);
-        echo '</pre>';*/
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-store', ['username' => $attributes['username']]));
-
         if ( array_key_exists('selected_roles', $attributes) ) {
             $attributes['role'] = explode(",", $attributes['selected_roles']);
         }
@@ -245,7 +241,7 @@ class UsersController extends Controller {
 
         // Setting user attributes with values from audit log to replay the requested action.
         // Password is not replayed.
-        $user->first_name = $att['first_name'];
+        $user->first_name = $att['first_name']; 
         $user->last_name = $att['last_name'];
         $user->username = $att['username'];
         $user->email = $att['email'];
@@ -271,12 +267,32 @@ class UsersController extends Controller {
      * @param $id
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $user = $this->user->find($id);
-
         // Get all attribute from the request.
-        $attributes = $request->all();
+        if($request->input('password'))
+        {
+            $this->validate($request,array('first_name' => 'required|min:3|max:255', 'password'=>'confirmed','phone' => 'required|', 'email' => 'required|email|min:3',  'payroll' => 'required|integer',  'profits'    => 'required|integer', 'selected_roles' => 'required',));
+            $attributes = $request->all();
+        }else{
+            $this->validate($request,array('first_name' => 'required|min:3|max:255','phone' => 'required|', 'email' => 'required|email|min:3',  'payroll' => 'required|integer',  'profits'    => 'required|integer', 'selected_roles' => 'required',));
+            $attributes = array( 
+                'first_name'     => $request->input('first_name'), 
+                'phone'          => $request->input('phone'),
+                'email'          => $request->input('email'),
+                'payroll'        => $request->input('payroll'),
+                'profits'        => $request->input('profits'),
+                'selected_roles' => $request->input('selected_roles'),
+                'perms'          => $request->input('perms'),
+                'regency_id'     => $request->input('regency_id'),
+                'gender'         => $request->input('gender'),
+                'department_id'  => $request->input('department_id'),
+                'enabled'        => $request->input('enabled'),
+                '_token'         => $request->input('_token'),
+                '_method'        => $request->input('_method'),
+            );
+        }
 
         // Get a copy of the attributes that we will modify to save for a replay.
         $replayAtt = $attributes;
@@ -319,7 +335,7 @@ class UsersController extends Controller {
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-destroy', ['username' => $user->username]));
 
         $this->user->delete($id);
-
+        $this->audit->delete('user_id',$id);
         Flash::success( trans('admin/users/general.status.deleted') );
 
         return redirect('/admin/users');

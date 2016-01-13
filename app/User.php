@@ -290,7 +290,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             $this->payroll = $attributes['payroll'];
         }
         if( array_key_exists('gender', $attributes) ) {
-            $this-> gender = $attributes['gender'];
+            $this->gender = $attributes['gender'];
         }
         $this->save();
 

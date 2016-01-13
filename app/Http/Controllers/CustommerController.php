@@ -11,7 +11,9 @@ use App\Repositories\AuditRepository as Audit;
 use Flash;
 use Auth;
 use App\User;
-use Datatables;
+use Yajra\Datatables\Html\Builder;
+use Yajra\Datatables\Services\DataTable;
+use Yajra\Datatables\Datatables;
 class CustommerController extends Controller
 {
     /**
@@ -24,25 +26,23 @@ class CustommerController extends Controller
      * @param Permission $permission
      * @param User $user
      */
-    public function __construct(Custommer $custommer,User $user)
+    public function __construct(Custommer $custommer,User $user,Builder $htmlBuilder)
     {   
         $this->custommer = $custommer;
+        $this->htmlBuilder = $htmlBuilder;
     }
     /**
      * Display a listing of the resource.
      *
      * @return Response
      */
-    public function index()
+    public function index(Builder $htmlBuilder)
     {
 
         Audit::log(Auth::user()->id, trans('admin/custommer/general.audit-log.category'), trans('admin/custommer/general.audit-log.msg-index'));
         
         $page_title       = trans('admin/custommer/general.page.index.title'); // "Admin | Users";
         $page_description = trans('admin/custommer/general.page.index.description'); // "List of users";
-       // $custommer        = $this->custommer->select('id','name','address','email','company','phone','enabled','create_by','code')->where('enabled',1)->orderBy('id','DESC')->paginate(10);
-        $custommer =  Custommer::select(['id','name','email','created_at','updated_at'])->get();
-        pre($custommer);
         return view('admin.custommer.index', compact('custommer', 'page_title', 'page_description'));
     }
 
@@ -91,13 +91,16 @@ class CustommerController extends Controller
      * @return Response
      */
     public function show($id)
-    {
+    {        
         $custommer        = $this->custommer->find($id);
 
-        Audit::log(Auth::user()->id, trans('admin/custommer/general.audit-log.category'), trans('admin/custommer/general.audit-log.msg-edit', ['name' => $custommer->name]));
+        if($custommer){
+            Audit::log(Auth::user()->id, trans('admin/custommer/general.audit-log.category'), trans('admin/custommer/general.audit-log.msg-edit', ['name' => $custommer->name]));
+            $page_title       = trans('admin/custommer/general.page.show.title'); // "Admin | Role | Edit";
+            $page_description = trans('admin/custommer/general.page.show.description', ['name' => $custommer->name]); // "Editing custommer";
+        }      
         
-        $page_title       = trans('admin/custommer/general.page.show.title'); // "Admin | Role | Edit";
-        $page_description = trans('admin/custommer/general.page.show.description', ['name' => $custommer->name]); // "Editing custommer";
+        
         return view('admin.custommer.show', compact('custommer', 'page_title', 'page_description'));
     }
 
@@ -288,7 +291,8 @@ class CustommerController extends Controller
     */
     public function data()
     {
-        $custommer =  Custommer::select(['id','name','email','created_at','updated_at'])->get();
-        return Datatables::of($custommer)->make(true);
+     
+       $custommer =  Custommer::select(['id','code','name','email','created_at','updated_at']);
+       return Datatables::of($custommer)->make(true);
     }
 }

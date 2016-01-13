@@ -28,7 +28,9 @@ class CreateUserRequest extends Request {
             'phone'      => 'required|',
             'email'      => 'required|email|min:3|unique:users',
             'payroll'    => 'required|integer',
-            'profits'    => 'required|integer',      
+            'profits'    => 'required|integer',
+            'selected_roles' => 'required',
+                 
         ];
     }
 
