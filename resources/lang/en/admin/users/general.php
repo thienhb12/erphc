@@ -17,9 +17,9 @@ return [
     ],
 
     'status'              => [
-        'created'                   => 'User successfully created',
-        'updated'                   => 'User successfully updated',
-        'deleted'                   => 'User successfully deleted',
+        'created'                   => 'Tạo tài khoản thành công',
+        'updated'                   => 'Cập nhật tài khoản thành công',
+        'deleted'                   => 'Xóa tài khoản thành công',
         'global-enabled'            => 'Selected users enabled.',
         'global-disabled'           => 'Selected users disabled.',
         'enabled'                   => 'User enabled.',
@@ -38,7 +38,7 @@ return [
 
     'page'              => [
         'index'              => [
-            'title'             => 'Admin | Users',
+            'title'             => 'Admin | Quản lý nhân viên',
             'description'       => 'List of users',
             'table-title'       => 'User list',
         ],

@@ -14,6 +14,7 @@ use App\User;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Services\DataTable;
 use Yajra\Datatables\Datatables;
+use DB;
 class CustommerController extends Controller
 {
     /**
@@ -291,8 +292,12 @@ class CustommerController extends Controller
     */
     public function data()
     {
-     
-       $custommer =  Custommer::select(['id','code','name','email','created_at','updated_at']);
-       return Datatables::of($custommer)->make(true);
+        $custommer =  Custommer::select(['id','code','name','email','phone','create_by','created_at','updated_at']);
+        $user     = DB::table('users')->lists('last_name','id');
+        return Datatables::of($custommer)->editColumn('create_by', '{{$create_by}}')->
+        addColumn('action', function ($custommer) {
+            return '<a href="'.route('admin.custommer.edit', $custommer->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>'. '<a href="#edit-'.$custommer->id.'" class="btn btn-xs btn-primary"><i class="fa fa-trash-o"></i> Delete</a>';
+        })
+        ->make(true);
     }
 }

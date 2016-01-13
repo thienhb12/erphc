@@ -119,6 +119,7 @@ Route::group(['middleware' => 'authorize'], function () {
         //Customer
         Route::post(  'custommer/enableSelected',      ['as' => 'admin.custommer.enable-selected',  'uses' => 'CustommerController@enableSelected']);
         Route::post(  'custommer/disableSelected',     ['as' => 'admin.custommer.disable-selected', 'uses' => 'CustommerController@disableSelected']);
+        Route::post(  'custommer',                     ['as' => 'admin.custommer.store',            'uses' => 'CustommerController@store']);
         Route::get( 'custommer',                       ['as' => 'admin.custommer.index','uses' => 'CustommerController@index']);
         Route::get( 'custommer/create',                ['as' => 'admin.custommer.create','uses' => 'CustommerController@create']);
         Route::get( 'custommer/{custommerId}',         ['as' => 'admin.custommer.show','uses'   => 'CustommerController@show']);        

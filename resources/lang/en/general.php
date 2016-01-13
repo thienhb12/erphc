@@ -55,7 +55,7 @@ return [
 
     'audit-log'           => [
         'category-login'        => 'Đăng nhập',
-        'msg-login-success'     => 'Successful login: :username.',
+        'msg-login-success'     => 'Đăng nhập thành công: :username.',
         'msg-login-failed'      => 'Login failed: :username.',
         'msg-forcing-logout'    => 'Forcing logout: :username.',
     ],

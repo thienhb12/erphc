@@ -333,9 +333,8 @@ class UsersController extends Controller {
         }
 
         Audit::log(Auth::user()->id, trans('admin/users/general.audit-log.category'), trans('admin/users/general.audit-log.msg-destroy', ['username' => $user->username]));
-
+        DB::table('audits')->where('user_id','=',$id)->delete();
         $this->user->delete($id);
-        $this->audit->delete('user_id',$id);
         Flash::success( trans('admin/users/general.status.deleted') );
 
         return redirect('/admin/users');
