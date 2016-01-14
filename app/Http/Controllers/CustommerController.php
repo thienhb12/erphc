@@ -295,11 +295,13 @@ class CustommerController extends Controller
     public function data()
     {
         $custommer =  Custommer::select(['id','code','name','email','phone','create_by_name','created_at','updated_at']);
-        $user     = DB::table('users')->lists('last_name','id');
         return Datatables::of($custommer)->
         addColumn('action', function ($custommer) {
             return '<a href="'.route('admin.custommer.edit', $custommer->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>'. '<a href="'.route('admin.custommer.confirm-delete', $custommer->id).'" data-toggle="modal" data-target="#modal_dialog" title="{{ trans("general.button.delete") }}" class="btn btn-xs btn-primary"><i class="fa fa-trash-o"></i> Delete</a>';
-        })->editColumn('id', '<input type="checkbox" value = "{{$id}}" name="chkCustommer[]"></input>')
+        })->addColumn('name',function ($custommer){
+            return link_to_route('admin.custommer.show', $custommer->name, [$custommer->id], []);
+        })
+        ->editColumn('id', '<input type="checkbox" value = "{{$id}}" name="chkCustommer[]"></input>')
         ->make(true);
     }
 }
