@@ -24,6 +24,7 @@ class CreateCustomer extends Migration
             $table->string('company');
             $table->string('code');
             $table->integer('create_by')->length(10);
+            $table->string('create_by_name')->length(80);
             $table->boolean('gender')->default(false);
             $table->boolean('enabled')->default(true);
             $table->timestamps();

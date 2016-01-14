@@ -30,7 +30,7 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
-                                <tr class="info">
+                                <tr>
                                     <th style="text-align: center">
                                         <a class="btn" href="#" onclick="toggleCheckbox(); return false;" title="{{ trans('general.button.toggle-select') }}">
                                             <i class="fa fa-check-square-o"></i>
@@ -45,7 +45,7 @@
                                 </tr>
                             </thead>
                             <tfoot>
-                                <tr class="info">
+                                <tr>
                                     <th style="text-align: center">
                                         <a class="btn" href="#" onclick="toggleCheckbox(); return false;" title="{{ trans('general.button.toggle-select') }}">
                                             <i class="fa fa-check-square-o"></i>

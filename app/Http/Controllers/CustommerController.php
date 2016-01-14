@@ -74,7 +74,7 @@ class CustommerController extends Controller
     
         $attributes              = $request->all();
         $attributes['create_by'] = Auth::user()->id;
-
+        $attributes['create_by_name'] = Auth::user()->first_name;
         Audit::log(Auth::user()->id, trans('admin/custommer/general.audit-log.category'), trans('admin/custommer/general.audit-log.msg-index'));
         
         $custommer = $this->custommer->create($attributes);
@@ -139,6 +139,8 @@ class CustommerController extends Controller
         Audit::log(Auth::user()->id, trans('admin/custommer/general.audit-log.category'), trans('admin/custommer/general.audit-log.msg-update', ['name' => $custommer->name]));
         
         $attributes = $request->all();
+        $attributes['create_by'] = Auth::user()->id;
+        $attributes['create_by_name'] = Auth::user()->first_name;
 
         $custommer->update($attributes);
 
@@ -292,12 +294,12 @@ class CustommerController extends Controller
     */
     public function data()
     {
-        $custommer =  Custommer::select(['id','code','name','email','phone','create_by','created_at','updated_at']);
+        $custommer =  Custommer::select(['id','code','name','email','phone','create_by_name','created_at','updated_at']);
         $user     = DB::table('users')->lists('last_name','id');
-        return Datatables::of($custommer)->editColumn('create_by', '{{$create_by}}')->
+        return Datatables::of($custommer)->
         addColumn('action', function ($custommer) {
-            return '<a href="'.route('admin.custommer.edit', $custommer->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>'. '<a href="#edit-'.$custommer->id.'" class="btn btn-xs btn-primary"><i class="fa fa-trash-o"></i> Delete</a>';
-        })
+            return '<a href="'.route('admin.custommer.edit', $custommer->id).'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>'. '<a href="'.route('admin.custommer.confirm-delete', $custommer->id).'" data-toggle="modal" data-target="#modal_dialog" title="{{ trans("general.button.delete") }}" class="btn btn-xs btn-primary"><i class="fa fa-trash-o"></i> Delete</a>';
+        })->editColumn('id', '<input type="checkbox" value = "{{$id}}" name="chkCustommer[]"></input>')
         ->make(true);
     }
 }
